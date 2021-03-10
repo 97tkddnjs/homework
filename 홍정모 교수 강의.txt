@@ -231,4 +231,127 @@ int y = (x>0)? 1 : 2;
 파이썬은 하나로 다 맞춰야 된다!
 cf) 하드(hard)코딩은 프로그래머가 코드에서 변수값을 리터럴 같이 고정된 값으로 직접 대입해주는 방식
  소프트(soft) 코딩은 프로그램 실행 중에 사용자의 입력이나 외부 파일 인터넷 통신 등으로 데이터를 가져오는 방식!
- 
+
+선언과 정의의 분리
+링킹 에러 같은 것에 대응 가능
+컴파일러 순차적으로 읽는 다
+함수를 알기 위한 최소 조건 입력이 뭐고 출력이 뭔지 알기!
+전방 선언(forward declaration)
+
+파일 쪼개기도 배울것임!
+
+큰 프로젝트 함수 길어짐 -> 그럼 굉장히 피로해짐 눈이
+파일 분리 이후 재사용하려고!! 이게 비중이 더 크다 -> 헤더 파일 만들자
+#pragma once
+<> 컴파일러에 딸려오는 특별한 것<-경로도 특별함 
+"" 차이->경로 바뀐 경우 해당 "폴더명/파일이름"
+
+Header Guard
+
+Linking error 사례 syntex error는 해당 메세지 누르면 위치로 가주지만
+Linking error는 직접 찾아야 됨!
+
+Header(include) Guard
+#pragma once <- header guard
+보통 함수 선언과 기능은 헤더 소스파일 폴더로 나뉘어야 됨 하지만 프로그래머 항상 그 원칙 지키기 힘듬
+이를 도와주기 위한 pragma once
+중복될 경우 한번만 include 해라 알려주는 게 
+#pragma once <- #ifndef ~~#define~~#endif 줄여준 것!!
+
+namespace(이름 공간)
+2개이상 내포 될때!
+namespace a{
+	...
+	namespace b{
+	myfunc()
+	...
+	}
+}
+using namespace a :: b;
+
+#define <- 전처리기 문자 바꿔주기 기능임
+요즘은 매크로 함수 같은 거 잘 안씀 ㅎㅎㅎ
+
+전처리기<-conditional compil가능
+빌드하기 전에 결정됨!
+전처리기 라인 안에서는 교체가 되는 것이 아님!
+알아두자
+
+아하 -> #define 정의 해당 소스파일에서만 효력이 있다!
+
+
+Fundamental Data Types
+built-in-types 기본 자료형 소개
+assignment 와 initialization은 다르다
+
+char<-ASCII 코드로 해석되는 것임 
+int
+
+자료형마다 저장되는 사이즈 및 방식이 다르다
+
+문자열 방식 <- string 외부라이브러리이나 거의 기본형처럼 사용됨
+signed 음의 정수도 가능
+unsigned는 0포함 양수
+char은 문자를 정수형태로 저장하나 출력시 문자 보여줌
+자료형 정해진 공간만큼만 데이터 들어갈 수 있다.
+가급적 메모리는 적게 쓰는 게 중요하다!<-어떤 환경인지 모르니까.
+signed는 디폴트임!
+unsigned 는 반드시 붙여서 해야됨
+
+
+Floating-point types 지수부 실수부~~
+float과 double 크기 차이 있음 double이 float의 두배
+bool ->true false
+void <- no storage // void pointer시 중요
+bool도 숫자로 바꿔서 저장하는 구나!!
+조건문 분기문  0아니면 다 참으로 본다!
+
+float 선언시 뒤에 접미사 f 필요! f 안붙일 시 truncated 잘라낼거다!
+파이썬 실수 주로 더블~
+딥러닝 들어올때는 float들어온다고 한다
+float double 차이 있다!! 기억
+modern c++ -> auto라는 게 있다!
+컴파일시 결정
+auto aval = 3.141598
+
+c++변수 초기화 방법 3가지가 있다
+built in data type시 
+copy initialize
+int a=123;
+int a = 4.15; //warning만 띄움
+
+객체지향 넘어가면 직접 만든 type으로 초기화
+direct initialization <-객체지향할 때 중요해짐
+int a(123) 
+int a(4.15)// int로 바꿔서 캐스팅해서 저장, 경고만함
+
+
+uniform initialization <-객체지향할 때 중요해짐; 좀더 엄격한 기준; 자주 쓰인다고 한다!
+int b{ 123 }; 
+int b {4.15} // error냄
+
+다른 사람 코드 읽기를 위해서라도 다양한 초기화 알아두자!
+
+int k, l ,m //same data type만 같이 선언 가능
+
+int k, l ,m  = 3; //뒤 m만 초기화지만 모두 초기화 하는 것처럼 보여서 이런 방식 지양
+
+int k =0 , l(456), m{123}; //가능은 함
+
+사용할 변수는 사용하기 직전에 선언하는 스타일로 변하고 있다!
+1. debugging 편리
+2. 묶여있어야 변수와 기능이 나중에 refactoring하기 편함
+
+integers 정수형!!
+overflow signed unsigned
+문자 - >숫자로 바꿔서 저장
+char타입 최소크기 1바이트 저장소 개념으로 사용하는 경우 있다(네트워크 쪽분들이)
+unsigned는 부호 부분도 숫자 표현하는 데 쓰인다.<-data size 좀더 크게 쓰인다느 이유로 signed쓰일 공간에 unsigned쓰지 말자
+
+#include<limits>
+
+cout<<std::numerc_limits<short>::max(),, min(), lowest();
+
+정수끼리의 연산 정수로 저장 그래서
+정수/정수 ->정수값
+
