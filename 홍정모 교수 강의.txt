@@ -355,3 +355,80 @@ cout<<std::numerc_limits<short>::max(),, min(), lowest();
 정수끼리의 연산 정수로 저장 그래서
 정수/정수 ->정수값
 
+c++ 표준 데이터 표준 최소 사이즈만 규정 플랫폼마다 컴파일러마다 구현된 사이즈 다를 수 있다!
+불확실성을 가질 수 있으므로 C++11 어떤 플랫폼이든지 사이즈 다르지 않게 고정 너비 정수라는 게 채택되었다고 함
+C++11 고정 너비 정수
+#include<cstdint> // iostream include시 별도로 안해도 된다!
+int main()
+{
+	std::int16_t i(5); //2byte짜리
+	std::int8_t myint = 65; //char type이였다 -> int형처럼 보이므로 가급적 사용 X하자는 의견 있다고 함
+
+	std::int_fast8_t fi(5); // 8bit 중에 가장 빠른 것
+	std::int_least64_t fl(5); //적어도 64bit 8byte를 갖는 데이터 타입을 갖는 데이터 형식
+}
+
+무치형 void
+void 선언은 불가능
+void *my_void; 는 가능
+
+데이터 타입이 다르고 데이터 타입의 사이즈가 달라도 그 주소를 표현하는 데이터 양은 동일하다!
+그래서 (void*)을 할 수도 있다!
+
+부동소수점수!
+컴퓨터로 실수를 다루는 것을 설명하도록 하겠다!
+
+실수 -> 부동소수점 수로 나타낸다!
+
+3가지가 있다!
+float  최소 크기 4		전형적 4
+double 최소 크기 	8	전형적 8
+Long double 최소 크기 8	전형적8.12.16
+
+딥러닝 보면 float으로 연산하는 것을 볼 수 있다!
+
+부동소수점 방식 한계가 있어서 주의할 점이 있다!
+그래서 강의 -> 주의할 점 위주로 살펴 보도록 할것이다!
+숫자가 표현하는 범위 보려면
+
+min() 아님->
+numeric_limits<자료형> :: lowest()로 최소 범위 보는 것임!
+
+31.4e-1
+31.4e //scientific notation <- 과학자들 피셜 자릿수가 크면 이런게 편하다 해
+
+#include<iomanip>
+
+int main()
+{
+
+	float f(123456789.0f);
+	double d;
+	
+	cout << std::setprecision(16); //앞으로 출력할 것들에 대한 설정을 바꿔주는 것
+	cout << f << endl; 	//123456792 정밀도가 떨어질 수 있다
+
+}
+
+그래서 요즘은 double로 쓰긴 하나 항상 double 정답이 아닐 수 있다!
+메모리 부족 현상 날 수 있어서 하지만 요즘 메모리 이슈 많이 해결되고 있음!
+setprecision으로 많은 것을 알 수 있다! 오차가 누적된다는 것을 볼 수 있음!
+
+
+다 double형
+
+zero =0.0
+posinf = 5.0/zero		//inf
+negif = -5.0/zero		//-inf
+nan = zero /zero		//-nan(ind)
+
+
+이런 결과 나오지 않게 해야된다!
+#include<cmath>
+
+
+isnan()함수로 nan 체크 가능함! 
+isinf()함수로는 inf 체크 가능!
+
+
+
