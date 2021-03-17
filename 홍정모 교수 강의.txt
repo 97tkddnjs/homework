@@ -350,7 +350,7 @@ unsigned는 부호 부분도 숫자 표현하는 데 쓰인다.<-data size 좀�
 
 #include<limits>
 
-cout<<std::numerc_limits<short>::max(),, min(), lowest();
+cout<<std::numerc_limits<short>::max(),, min(), lowest(); //주로 최소값 lowest
 
 정수끼리의 연산 정수로 저장 그래서
 정수/정수 ->정수값
@@ -429,6 +429,74 @@ nan = zero /zero		//-nan(ind)
 
 isnan()함수로 nan 체크 가능함! 
 isinf()함수로는 inf 체크 가능!
+
+Boolean 자료형과 if
+
+bool -> true(1),  false(0)
+
+컴퓨터 입장에서는 1이냐 0이냐겠지
+
+cout<< std:: boolalpha //하면 문자처럼 나옴
+반대는 no~~~
+
+
+if 0이 아니면 다 true
+boolean 입력할 때 문자열로 true false 입력해도 다 true 반환!
+true <- 0이 아니므로 true
+false <- 0이 아니므로 true
+하지만 이러한 오류 발생 가능한 프로그래밍 쓰지 말 것!
+
+
+
+문자형 char type
+
+컴퓨터 내부에서는 숫자로 표현하게 된다!
+
+
+c++ casting 
+cout<< int('A');
+c type
+cout<<(int)'A';
+//강제로 타입 변환하는 개념 강함
+
+// fundalmental type(기본 타입)들 간 변환 시킬 떄 컴파일러에게 이렇게 변하는 데 문제 없니 확인 바라 그런  느낌 강함!
+
+cout<<static_cast<char>('A') //문자형이니 굳이 cast할 필요 없음
+
+cout<<static_cast<int>('A')	// cast 중요함! 
+
+
+받은 내용 버퍼(임시저장)에 넣어두었다가 스트림이 비면 가져오게 된다!
+
+tip 
+"\n" != endl    <-차이점 있다! 기능은 똑같아 보일 지라도
+endl의 의미 줄바꿈과 동시에 버퍼에 있는 모든 내용 화면에 다 출력해라!
+(버퍼에 담기고 콘솔에 출력이 안담기는 경우 있을 수 있다)
+endl 버퍼에 있는 것 화면에 내보내고
+std :: flush <-줄바꿈 없이 버퍼 내용 다 내보내라!
+
+wchar_t c; 	//가급적 사용안하는 게 좋다고 함!
+char32_t c3; 	// 이모티콘 같은 것 문자로 사용 가능 유니코드 표현 가능하게 하는 것
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
