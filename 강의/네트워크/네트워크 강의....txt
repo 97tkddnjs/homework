@@ -1,0 +1,81 @@
+여러가지 통신 방법이 있다
+대표적인게 
+mpi?
+메세지 주고 받음으로써 두 노드간 통신을 한다!
+한쪽 보낸다 나머지 현재 메세지가 잘 도착했는지 확인 메세지 전송
+둘 사이에 안정적인 도착을 확인할 수 있는 기법
+(응답메세지)<-eck message
+
+remote communication <- 이번 학기 집중해본다고 함
+
+fault tolerance
+
+
+two phase commit <-예방의 성격 (&hand shaking 개념)
+
+그럼 사후처리는? <- message를 보냈는데 아무 응답이 없어 -> retransmittion
+
+replication 
+
+5명 커버 가능 네트워크 시스템 근데 10명 접속 5명 먼저 승인 나머지 기다려야 됨
+그래서 동일 리소스 복사한다.(서버 복제해서 하나 더 두면 10명 가능이겠지?)
+
+[000.000.000.000] <-ip
+
+ping 명령어로 네이버 하면
+230.~~~.100
+230.~~~.95
+달라질 수 있는 데 이런 것 미러서버라고 한다.
+이것이 replication응용이라고 볼 수 있다.
+(usb 같은 데에다가 백업한느 것도 replication이라고 볼 수 있다고 함)
+rollback recovery<-rollback 서버의 안정성을 위해서 사용하는 개념임
+복귀할 수 있는 지점을 만들어 둠 <- 향후 프로세스 진행하다가 복구 해당 위치로 복귀가능
+
+remote information access <-
+
+1. 개념 distributed file system
+
+file system : 컴퓨터의 저장장치 (hdd <- 싸고 용량큼) 접근하는 운영체재에 섹터에 어떠한 형태로 읽어올 것이다.
+어떠한 포맷으로 저장할 것이다 하는 체제
+포맷<- 내 운영체제에 맞는 형식으로 맞춰 줄 것이다라는 의미
+
+원격지 컴퓨터간 파일 형식 맞춰줘야 읽을 수 있겠지
+
+single ->distributed로 넘어오면서 필요해짐
+Distributed Security	//자세하게 다루지는 않겠다.
+키개념<-해쉬 코드로 키 암호화함	
+authentication <- sk 사용자 Lg나 kt 사용 가능? 원칙적으로 불가...
+
+
+Mobile Computing(distributed -> 이쪽으로 넘어갔다)
+무선화
+
+(mobility  portability) 둘 사이의 관계성이 중요
+
+이동성 휴대성
+
+단순 장치의 이동성을 고려하면 같을 수 있다
+하지만 mobile device <- portability 특성을 가지고 있다
+만약 핸드폰 그냥 들고만 다닌다 이동성
+portability 네트워크를 통해서 데이터 주고 받는 행위를 계속 취한다.
+이동하면서 사용하는 행동은 <- 휴대성개념이 들어갔다고 볼 수 있다.
+
+사용자가 몰라도 되게끔 하는것 비가시성 invisibility
+scalability <- 모든 사용자들에게 서비스를 제공하는 것
+
+
+protocol 통신의 5가지 요소중 한개임
+<- 통신 규약 통신 대상(peers)들(source destintation) 사이의 협정 어떻게 통신할 지
+p2p -> peer to peer 다운로딩하고 다른 점은? 원격지 서버가 하나 존재하고 
+이 서버에서 다운로딩 다수의 파일로 쪼갬(파일이 크므로) 그리고 다 다운로드 하면 하나의 파일로 됨
+
+만약 쪼개진 파일 다수의 서버에서 다운 받으면 좀 더 편리할 것이다.
+
+통신의 5가지 요소 
+source, destination, protocol, communication medium, data;
+
+
+
+
+
+
